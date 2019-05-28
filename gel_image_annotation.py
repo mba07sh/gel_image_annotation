@@ -21,18 +21,12 @@ import plotly.graph_objs as go
 #%% Define the functions for the program
 
 def flatten_for_plot(data, axis):
-    
     single=[]
     for y in data:
-        flat=[]
-        for x in y:
-            flat.append(x[0])
-        single.append(flat)
+        single.append(np.sum(y)/3)
         
-    
-    single=np.array(single)
-    flat=np.sum(single, axis=axis)    
-    return flat
+    single=np.array(single)  
+    return single
 
 # Not used
 #def rolling_derivative(flat_data):
@@ -380,3 +374,9 @@ path='/path/to/your/data/'
 #Edit these to point them to your own gel images
 plot_gel_image(path+'Raw Data/DSC_0561.JPG',gel_lanes=12,markers=markers)
 plot_gel_image(path+'/Raw Data/DSC_0572.JPG',gel_lanes=15,markers=markers)
+
+#%%
+#
+#image = cv2.imread('/Users/steven/Downloads/26616-ladder-002.jpg-650.jpg')
+#image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#first_lane_flat=flatten_for_plot(image, 1)
